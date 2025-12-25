@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger)
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
-  const subtitleRef = useRef<HTMLParagraphElement>(null)
+  const subtitleRef = useRef<HTMLDivElement>(null)
   const imageRef = useRef<HTMLDivElement>(null)
   const overlayRef = useRef<HTMLDivElement>(null)
   const messageRef = useRef<HTMLDivElement>(null)
@@ -83,21 +83,27 @@ export default function HeroSection() {
       <div ref={overlayRef} className="absolute inset-0 z-30 bg-background" style={{ transformOrigin: "top" }} />
 
       <div ref={imageRef} className="absolute inset-0 z-0">
-        <Image src="/luxury-natural-handmade-soap-bars-with-dried-flowe.jpg" alt="Luxusní přírodní mýdla" fill className="object-cover" priority />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/10 to-background/60" />
+        <Image
+          src="/luxury-natural-handmade-soap-bars-with-dried-flowe.jpg"
+          alt="Luxusní přírodní mýdla"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/30 to-background/70" />
       </div>
 
       <div className="relative z-20 flex h-full flex-col items-center justify-center px-4">
         <div
           ref={messageRef}
-          className="mb-8 rounded-full border border-accent/30 bg-background/60 px-6 py-2 backdrop-blur-sm"
+          className="mb-8 rounded-full border border-accent/30 bg-background/80 px-6 py-2 backdrop-blur-md"
         >
           <span className="text-sm tracking-widest text-accent">Exkluzivní dárek od Studio Vision</span>
         </div>
 
         <h1
           ref={titleRef}
-          className="font-serif text-5xl font-light tracking-[0.2em] text-foreground md:text-7xl lg:text-8xl"
+          className="font-serif text-5xl font-light tracking-[0.2em] text-foreground drop-shadow-lg md:text-7xl lg:text-8xl"
           style={{ perspective: "1000px" }}
         >
           {chars.map((char, i) => (
@@ -106,9 +112,13 @@ export default function HeroSection() {
             </span>
           ))}
         </h1>
-        <p ref={subtitleRef} className="mt-8 max-w-md text-center text-base text-muted-foreground md:text-lg">
-          Roční profesionální podpora v hodnotě přes 380 000 Kč
-        </p>
+
+        <div className="mt-8 rounded-2xl border border-accent/20 bg-background/80 px-8 py-4 backdrop-blur-md shadow-lg">
+          <p ref={subtitleRef} className="max-w-md text-center text-lg font-medium text-foreground md:text-xl">
+            Roční profesionální podpora v hodnotě přes{" "}
+            <span className="font-serif text-2xl text-accent md:text-3xl">380 000 Kč</span>
+          </p>
+        </div>
 
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
           <div className="flex flex-col items-center gap-4">
